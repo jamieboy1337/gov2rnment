@@ -34,8 +34,14 @@ class Fortune(IModule):
   async def fortune(self, message):
     # use user and time to generate a fortune
     user_hash = hash(message.author.name)
-    user_hash = user_hash ^ int(time.time() / (60 * 60 * 24))
-    cur_date = datetime.now().strftime("%B %d, %Y")
+
+    d1 = datetime.now()
+    d0 = datetime(2000, 1, 1);
+    days = (d1 - d0).days;
+
+    user_hash = user_hash ^ days
+    cur_date = d1.strftime("%B %d, %Y")
+
     random.seed(user_hash)
     fortune_ord = random.randint(0, len(self.fortunes) - 1)
     result = Embed()
