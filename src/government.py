@@ -4,6 +4,7 @@ import discord
 import asyncio
 from module.trivia import Trivia
 from module.fortune import Fortune
+from module.nsfw import NSFW
 
 class Government(discord.Client):
   __slots__ = ["modules"]
@@ -33,8 +34,10 @@ if __name__ == '__main__':
   client = Government()
   trivia = Trivia()
   fortune = Fortune()
+  nsfw = NSFW()
   client.add_module(trivia)
   client.add_module(fortune)
+  client.add_module(nsfw)
 
   token = ""
   with open("resources/discord_token.txt", "r") as tokenfile:
