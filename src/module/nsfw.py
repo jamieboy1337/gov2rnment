@@ -31,8 +31,8 @@ class NSFW(IModule):
       tags.append(page_no)
       page_no = None
     else:
-      match = re.search(r'page:\d+', page_no)
-      page_no = int(match.group(0))    
+      match = re.search(r'page:(\d+)', page_no)
+      page_no = match.group(1)   
 
     url = url + "tags=" + " ".join(tags)
     if page_no is not None:
